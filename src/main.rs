@@ -165,6 +165,7 @@ pub async fn main() -> Result<(), Error> {
             "http://localhost:3000".parse::<HeaderValue>()?,
             "http://127.0.0.1:3000".parse::<HeaderValue>()?,
             "https://3reco.co.za".parse::<HeaderValue>()?,
+            "https://3reco.vps2.lone-wolf.dev".parse::<HeaderValue>()?,
         ])
         .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE])
         .allow_headers([header::CONTENT_TYPE, header::AUTHORIZATION, header::ACCEPT])
