@@ -74,7 +74,7 @@ pub async fn user(
         ));
     }
 
-    if user.role() != Role::Collector && user.role() == Role::Business {
+    if user.role() != Role::Collector && authenticated_user.role() == Role::Business {
         return Err((
             StatusCode::UNAUTHORIZED,
             Json(json!({
