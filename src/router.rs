@@ -43,6 +43,7 @@ pub async fn create_router(app_state: AppState) -> Router {
                         .post(collector::update::collector)
                         .delete(collector::delete::collector),
                 )
+                .route("/search/:query", get(collector::search::collector))
                 .route("/add", post(collector::add::collector)),
         )
         .nest(
