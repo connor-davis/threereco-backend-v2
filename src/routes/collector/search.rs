@@ -67,6 +67,7 @@ pub async fn collector(
             OR last_name ILIKE '%' || $1 || '%'
             OR phone_number ILIKE '%' || $1 || '%'
             OR users.email ILIKE '%' || $1 || '%'
+            OR collector_profile.id::text ILIKE '%' || $1 || '%'
         "#,
         query
     )
