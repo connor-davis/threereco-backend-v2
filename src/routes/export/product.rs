@@ -59,9 +59,9 @@ pub async fn product(
             product_record.name,
             product_record.description,
             product_record.price,
-            product_record.business_name.unwrap_or("N/F".to_string()),
-            product_record.business_phone_number.unwrap_or("N/F".to_string()),
-            product_record.business_email.unwrap_or("N/F".to_string())
+            product_record.business_name.unwrap_or("-".to_string()),
+            product_record.business_phone_number.unwrap_or("-".to_string()),
+            product_record.business_email.unwrap_or("-".to_string())
         )
         .as_str();
     }

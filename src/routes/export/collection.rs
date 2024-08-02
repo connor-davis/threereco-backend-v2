@@ -31,6 +31,7 @@ pub async fn collection(
                 collection.weight AS weight,
                 product.price AS price,
                 product.price * collection.weight AS total_price,
+                product.name AS product_name,
                 business.business_name AS business_name,
                 business.phone_number AS business_phone_number,
                 CONCAT(business.address, ', ', business.city, ', ', business.state, ', ', business.zip_code) AS business_location,
@@ -66,27 +67,28 @@ pub async fn collection(
     })?;
 
     let mut csv_string =
-        format!("\"Id\",\"Collection Weight (kg)\",\"Product Price (R)\",\"Collection Total Price (R)\",\"Business Name\",\"Business Phone Number\",\"Business Location\",\"Business Email\",\"Collector Full Name\",\"Collector ID Number\",\"Collector Phone Number\",\"Collector Location\",\"Collector Bank Name\",\"Collector Bank Account Holder\",\"Collector Bank Account Number\",\"Collector Email\"");
+        format!("\"Id\",\"Product Name\",\"Collection Weight (kg)\",\"Product Price (R)\",\"Collection Total Price (R)\",\"Business Name\",\"Business Phone Number\",\"Business Location\",\"Business Email\",\"Collector Full Name\",\"Collector ID Number\",\"Collector Phone Number\",\"Collector Location\",\"Collector Bank Name\",\"Collector Bank Account Holder\",\"Collector Bank Account Number\",\"Collector Email\"");
 
     for collection_record in collections {
         csv_string += format!(
-            "\n\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"",
+            "\n\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"",
             collection_record.id,
+            collection_record.product_name.unwrap_or("-".to_string()),
             collection_record.weight,
             collection_record.price.unwrap_or(BigDecimal::from(0)),
             collection_record.total_price.unwrap_or(BigDecimal::from(0)),
-            collection_record.business_name.unwrap_or("N/F".to_string()),
-            collection_record.business_phone_number.unwrap_or("N/F".to_string()),
-            collection_record.business_location.unwrap_or("N/F".to_string()),
-            collection_record.business_email.unwrap_or("N/F".to_string()),
-            collection_record.collector_full_name.unwrap_or("N/F".to_string()),
-            collection_record.collector_id_number.unwrap_or("N/F".to_string()),
-            collection_record.collector_phone_number.unwrap_or("N/F".to_string()),
-            collection_record.collector_location.unwrap_or("N/F".to_string()),
-            collection_record.collector_bank_name.unwrap_or("N/F".to_string()),
-            collection_record.collector_bank_account_holder.unwrap_or("N/F".to_string()),
-            collection_record.collector_bank_account_number.unwrap_or("N/F".to_string()),
-            collection_record.collector_email.unwrap_or("N/F".to_string()),
+            collection_record.business_name.unwrap_or("-".to_string()),
+            collection_record.business_phone_number.unwrap_or("-".to_string()),
+            collection_record.business_location.unwrap_or("-".to_string()),
+            collection_record.business_email.unwrap_or("-".to_string()),
+            collection_record.collector_full_name.unwrap_or("-".to_string()),
+            collection_record.collector_id_number.unwrap_or("-".to_string()),
+            collection_record.collector_phone_number.unwrap_or("-".to_string()),
+            collection_record.collector_location.unwrap_or("-".to_string()),
+            collection_record.collector_bank_name.unwrap_or("-".to_string()),
+            collection_record.collector_bank_account_holder.unwrap_or("-".to_string()),
+            collection_record.collector_bank_account_number.unwrap_or("-".to_string()),
+            collection_record.collector_email.unwrap_or("-".to_string()),
         )
         .as_str();
     }
