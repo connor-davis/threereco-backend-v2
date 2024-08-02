@@ -60,19 +60,19 @@ pub async fn collector(
     for collector_record in collectors {
         csv_string += format!(
             "\n\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"",
-            collector_record.id.unwrap(),
+            collector_record.id,
             collector_record.user_email,
-            collector_record.first_name.unwrap_or("N/F".to_string()),
-            collector_record.last_name.unwrap_or("N/F".to_string()),
-            collector_record.id_number.unwrap_or("N/F".to_string()),
-            collector_record.phone_number.unwrap_or("N/F".to_string()),
-            collector_record.address.unwrap_or("N/F".to_string()),
-            collector_record.city.unwrap_or("N/F".to_string()),
-            collector_record.state.unwrap_or("N/F".to_string()),
-            collector_record.zip_code.unwrap_or("N/F".to_string()),
-            collector_record.bank_name.unwrap_or("N/F".to_string()),
-            collector_record.bank_account_holder.unwrap_or("N/F".to_string()),
-            collector_record.bank_account_number.unwrap_or("N/F".to_string()),
+            collector_record.first_name,
+            collector_record.last_name,
+            collector_record.id_number,
+            collector_record.phone_number,
+            collector_record.address,
+            collector_record.city,
+            collector_record.state,
+            collector_record.zip_code,
+            collector_record.bank_name,
+            collector_record.bank_account_holder,
+            collector_record.bank_account_number,
         )
         .as_str();
     }

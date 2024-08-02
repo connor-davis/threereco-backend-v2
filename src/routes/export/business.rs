@@ -60,18 +60,17 @@ pub async fn business(
     for business_record in businesses {
         csv_string += format!(
             "\n\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"",
-            business_record.id.unwrap(),
+            business_record.id,
             business_record.user_email,
-            business_record.business_name.unwrap_or("-".to_string()),
-            business_record.business_type.unwrap_or("-".to_string()),
+            business_record.business_name,
+            business_record.business_type,
             business_record
-                .business_description
-                .unwrap_or("-".to_string()),
-            business_record.phone_number.unwrap_or("-".to_string()),
-            business_record.address.unwrap_or("-".to_string()),
-            business_record.city.unwrap_or("-".to_string()),
-            business_record.state.unwrap_or("-".to_string()),
-            business_record.zip_code.unwrap_or("-".to_string())
+                .business_description,
+            business_record.phone_number,
+            business_record.address,
+            business_record.city,
+            business_record.state,
+            business_record.zip_code
         )
         .as_str();
     }
