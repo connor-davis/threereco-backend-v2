@@ -7,3 +7,5 @@ pub mod users;
 pub mod collector;
 pub mod product;
 pub mod collection;
+pub mod audit_logs;
+pub mod export;

@@ -2,7 +2,7 @@ use utoipa::OpenApi;
 
 use crate::{
     documentation::api_security_addon::SecurityAddon,
-    routes::{authentication, business, collection, collector, product, users},
+    routes::{authentication, business, collection, collector, export, product, users},
 };
 
 #[derive(OpenApi)]
@@ -37,6 +37,7 @@ use crate::{
         collector::add::collector,
         collector::update::collector,
         collector::delete::collector,
+        collector::search::collector,
         product::view::products,
         product::view::product,
         product::add::product,
@@ -47,6 +48,7 @@ use crate::{
         collection::add::collection,
         collection::update::collection,
         collection::delete::collection,
+        export::business::business
     ),
     components(
         schemas(

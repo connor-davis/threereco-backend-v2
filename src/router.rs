@@ -12,8 +12,8 @@ use crate::{
     authentication::jwt,
     documentation::api_documentation::ApiDoc,
     routes::{
-        authentication, business, collection, collector, fallback::get_fallback, index::get_index,
-        mfa, product, users,
+        authentication, business, collection, collector, export, fallback::get_fallback,
+        index::get_index, mfa, product, users,
     },
     AppState,
 };
@@ -21,6 +21,14 @@ use crate::{
 pub async fn create_router(app_state: AppState) -> Router {
     Router::new()
         // business routes
+        .nest(
+            "/export",
+            Router::new()
+                .route("/business", get(export::business::business))
+                .route("/collector", get(export::collector::collector))
+                .route("/product", get(export::product::product))
+                .route("/collection", get(export::collection::collection)),
+        )
         .nest(
             "/business",
             Router::new()
