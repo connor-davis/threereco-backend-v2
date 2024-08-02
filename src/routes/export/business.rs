@@ -61,11 +61,10 @@ pub async fn business(
         csv_string += format!(
             "\n\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"",
             business_record.id,
-            business_record.user_email,
+            business_record.user_email.unwrap_or("N/F".to_string()),
             business_record.business_name,
             business_record.business_type,
-            business_record
-                .business_description,
+            business_record.business_description,
             business_record.phone_number,
             business_record.address,
             business_record.city,

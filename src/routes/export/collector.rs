@@ -61,7 +61,7 @@ pub async fn collector(
         csv_string += format!(
             "\n\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"",
             collector_record.id,
-            collector_record.user_email,
+            collector_record.user_email.unwrap_or("N/F".to_string()),
             collector_record.first_name,
             collector_record.last_name,
             collector_record.id_number,
